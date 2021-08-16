@@ -1,7 +1,7 @@
 import For from "./objects/for";
 import ForIn from "./objects/for-in";
 import If from "./objects/if";
-import bang from "./objects/bang";
+import _bang from "./objects/bang";
 import call from "./objects/call";
 import delay from "./objects/delay";
 import dget from "./objects/dget";
@@ -16,7 +16,12 @@ import set from "./objects/set";
 import thispatcher from "./objects/thispatcher";
 import v from "./objects/v";
 import unloadbang from "./objects/unloadbang";
+import BangUI from "./ui/bang";
 import { BaseObject, generateDefaultObject } from "./sdk";
+
+export class bang extends generateDefaultObject(_bang as typeof BaseObject) {
+    static UI = BangUI;
+}
 
 export default async () => {
     return {
@@ -33,7 +38,7 @@ export default async () => {
         call: generateDefaultObject(call as typeof BaseObject),
         v: generateDefaultObject(v as typeof BaseObject),
         lambda: generateDefaultObject(lambda as typeof BaseObject),
-        bang: generateDefaultObject(bang as typeof BaseObject),
+        bang,
         loadbang: generateDefaultObject(loadbang as typeof BaseObject),
         unloadbang: generateDefaultObject(unloadbang as typeof BaseObject),
         delay: generateDefaultObject(delay as typeof BaseObject),

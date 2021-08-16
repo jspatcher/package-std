@@ -27,7 +27,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-const name = _package_info__WEBPACK_IMPORTED_MODULE_0__.default.name.split("/").pop();
+const name = _package_info__WEBPACK_IMPORTED_MODULE_0__.default.name.split("/").pop().replace(/^package-/, '');
 const {
   author,
   license,
@@ -3076,8 +3076,8 @@ exports.deprecate = function(fn, msg) {
 var debugs = {};
 var debugEnvRegex = /^$/;
 
-if (process.env.NODE_DEBUG) {
-  var debugEnv = process.env.NODE_DEBUG;
+if (({"NODE_ENV":"development"}).NODE_DEBUG) {
+  var debugEnv = ({"NODE_ENV":"development"}).NODE_DEBUG;
   debugEnv = debugEnv.replace(/[|\\{}()[\]^$+?.]/g, '\\$&')
     .replace(/\*/g, '.*')
     .replace(/,/g, '$|^')
@@ -3821,7 +3821,7 @@ module.exports = $gOPD;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@jspatcher/package-std","version":"1.0.0","description":"The standard package for JSPatcher","main":"dist/index.js","scripts":{"build":"webpack --mode development","build-watch":"webpack --mode development --watch --stats-children"},"keywords":["jspatcher"],"jspatcher":{"isJSPatcherPackage":true,"thumbnail":"","jspatpkg":"index.jspatpkg.js","jsdsppkg.main":"index.jsdsppkg.main.js","jsdsppkg.aw":"index.jsdsppkg.aw.js"},"author":"Fr0stbyteR","license":"GPL-3.0-or-later","devDependencies":{"@babel/core":"^7.15.0","@babel/plugin-proposal-class-properties":"^7.14.5","@babel/preset-env":"^7.15.0","@babel/preset-typescript":"^7.15.0","babel-loader":"^8.2.2","clean-webpack-plugin":"^4.0.0-alpha.0","copy-webpack-plugin":"^9.0.1","jspatcher":"file:../../jspatcher","typescript":"^4.3.5","util":"^0.12.4","webpack":"^5.50.0","webpack-cli":"^4.7.2","worklet-loader":"^2.0.0"}}');
+module.exports = JSON.parse('{"name":"@jspatcher/package-std","version":"1.0.0","description":"The standard package for JSPatcher","main":"dist/index.js","scripts":{"build":"webpack --mode development","build-watch":"webpack --mode development --watch --stats-children"},"keywords":["jspatcher"],"jspatcher":{"isJSPatcherPackage":true,"thumbnail":"","jspatpkg":"index.jspatpkg.js","jsdsppkg.main":"index.jsdsppkg.main.js","jsdsppkg.aw":"index.jsdsppkg.aw.js"},"author":"Fr0stbyteR","license":"GPL-3.0-or-later","repository":"https://github.com/jspatcher/package-std","devDependencies":{"@babel/core":"^7.15.0","@babel/plugin-proposal-class-properties":"^7.14.5","@babel/preset-env":"^7.15.0","@babel/preset-react":"^7.14.5","@babel/preset-typescript":"^7.15.0","@types/react":"^17.0.18","babel-loader":"^8.2.2","clean-webpack-plugin":"^4.0.0-alpha.0","copy-webpack-plugin":"^9.0.1","jspatcher":"file:../../jspatcher","react":"^17.0.2","typescript":"^4.3.5","util":"^0.12.4","webpack":"^5.50.0","webpack-cli":"^4.7.2"}}');
 
 /***/ })
 
