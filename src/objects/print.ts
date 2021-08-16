@@ -1,7 +1,7 @@
 import * as Util from "util";
 import StdObject from "./base";
 import { isBang } from "../sdk";
-import type { IArgsMeta, IInletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class print extends StdObject<{}, {}, [any], [], [string]> {
     static description = "Print to console";

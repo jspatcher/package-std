@@ -1,5 +1,5 @@
 import packageInfo from "./package-info";
-import type { IExternalPackage } from "jspatcher/src/core/GlobalPackageManager";
+import type { IExternalPackage } from "@jspatcher/jspatcher/src/core/GlobalPackageManager";
 
 export const name = packageInfo.name.split("/").pop().replace(/^package-/, '');
 

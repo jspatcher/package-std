@@ -1,5 +1,5 @@
 import StdObject from "./base";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class set extends StdObject<{}, {}, [Record<string, any> | any[], string | number, any], [Record<string, any> | any[]], [string | number, any]> {
     static description = "Set a property of incoming object";

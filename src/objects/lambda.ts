@@ -1,6 +1,6 @@
 import StdObject from "./base";
 import { Bang, isBang } from "../sdk";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class lambda extends StdObject<{}, {}, [Bang, any], [(...args: any[]) => any, ...any[]], [number]> {
     static description = "Generate anonymous function, output args when called";

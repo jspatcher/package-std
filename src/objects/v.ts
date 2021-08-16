@@ -1,9 +1,9 @@
 import StdObject from "./base";
 import { Bang, isBang } from "../sdk";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
-import type AbstractProjectFile from "jspatcher/src/core/file/AbstractProjectFile";
-import type TemporaryProjectFile from "jspatcher/src/core/file/TemporaryProjectFile";
-import type { ProjectFileEventMap } from "jspatcher/src/core/file/AbstractProjectFile";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
+import type AbstractProjectFile from "@jspatcher/jspatcher/src/core/file/AbstractProjectFile";
+import type TemporaryProjectFile from "@jspatcher/jspatcher/src/core/file/TemporaryProjectFile";
+import type { ProjectFileEventMap } from "@jspatcher/jspatcher/src/core/file/AbstractProjectFile";
 
 export default class v extends StdObject<{}, { value: any }, [Bang | any, any, string | number], [any], [string | number, any]> {
     static description = "Store anything as named sharable variable";

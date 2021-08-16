@@ -1,5 +1,5 @@
 import StdObject from "./base";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class dget extends StdObject<{}, {}, [Record<string, any> | any[], ...(string | number)[]], any[], (string | number)[]> {
     static description = "Get a deep property of incoming object";

@@ -1,4 +1,4 @@
-import type { IJSPatcherSDK } from "jspatcher/src/core/SDK";
+import type { IJSPatcherSDK } from "@jspatcher/jspatcher/src/core/SDK";
 
 const sdk = (globalThis as any).jspatcherEnv.sdk as IJSPatcherSDK;
 export const {

@@ -1,6 +1,6 @@
 import StdObject from "./base";
 import { Bang, isBang } from "../sdk";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class ForIn extends StdObject<{}, {}, [any, any], [Bang, string | number | symbol, any], [Record<string, any>]> {
     static description = "Object key-value iterator";

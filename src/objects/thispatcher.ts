@@ -1,6 +1,6 @@
 import StdObject from "./base";
 import { Bang, Patcher } from "../sdk";
-import type { IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 interface P {
     args: number;

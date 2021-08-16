@@ -1,5 +1,5 @@
 import StdObject from "./base";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class gate extends StdObject<{}, {}, [any, any], [any], [any]> {
     static description = "Bypass or block incoming data";

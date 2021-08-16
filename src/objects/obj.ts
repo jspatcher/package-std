@@ -1,6 +1,6 @@
 import StdObject from "./base";
 import { Bang } from "../sdk";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class obj extends StdObject<{}, {}, [Bang, ...any], [Record<string, any>], (string | number)[]> {
     static description = "Construct an object with various properties";

@@ -1,6 +1,6 @@
 import StdObject from "./base";
 import { Bang } from "../sdk";
-import type { IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class If extends StdObject<{}, {}, [boolean], [Bang, Bang]> {
     static description = "Output a bang on true / false";

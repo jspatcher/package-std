@@ -1,6 +1,6 @@
 import StdObject from "./base";
 import { Bang, isBang } from "../sdk";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class For extends StdObject<{}, {}, [Bang, number, number, number], [Bang, number], [number, number, number?]> {
     static description = "Number iterator";

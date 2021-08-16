@@ -1,6 +1,6 @@
 import StdObject from "./base";
 import { Bang } from "../sdk";
-import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "jspatcher/src/core/objects/base/AbstractObject";
+import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
 export default class sel extends StdObject<{}, {}, any[], (Bang | any)[], any[]> {
     static description = "Output a bang on a matched inlet";
