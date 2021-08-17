@@ -5,7 +5,9 @@ import type AbstractProjectFile from "@jspatcher/jspatcher/src/core/file/Abstrac
 import type TemporaryProjectFile from "@jspatcher/jspatcher/src/core/file/TemporaryProjectFile";
 import type { ProjectFileEventMap } from "@jspatcher/jspatcher/src/core/file/AbstractProjectFile";
 
-export default class v extends StdObject<{}, { value: any }, [Bang | any, any, string | number], [any], [string | number, any]> {
+type A = [string | number, any];
+
+export default class v extends StdObject<{}, { value: any }, [Bang | any, any, string | number], [any], A> {
     static description = "Store anything as named sharable variable";
     static inlets: IInletsMeta = [{
         isHot: true,
@@ -75,11 +77,7 @@ export default class v extends StdObject<{}, { value: any }, [Bang | any, any, s
                 await subscribeItem();
             }
         };
-        this.on("preInit", () => {
-            this.inlets = 3;
-            this.outlets = 1;
-        });
-        this.on("updateArgs", async (args) => {
+        const handleArgs = async (args: Partial<A>) => {
             const key = args[0]?.toString();
             if (key !== this._.key) {
                 this._.key = key;
@@ -90,13 +88,20 @@ export default class v extends StdObject<{}, { value: any }, [Bang | any, any, s
                     this._.sharedItem?.save(this.state.value, this);
                 }
             }
+        };
+        this.on("preInit", () => {
+            this.inlets = 3;
+            this.outlets = 1;
         });
+        this.on("updateArgs", handleArgs);
         this.on("updateState", ({ value }) => {
             this.setState({ value });
             this._.sharedItem?.save(this.state.value, this);
             this.outlet(0, this.state.value);
         });
-        this.on("postInit", reload);
+        this.on("postInit", () => {
+            return handleArgs(this.args);
+        });
         this.on("inlet", ({ data, inlet }) => {
             if (inlet === 0) {
                 if (!isBang(data)) {

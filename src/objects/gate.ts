@@ -22,7 +22,7 @@ export default class gate extends StdObject<{}, {}, [any, any], [any], [any]> {
         default: true,
         description: "default state"
     }];
-    _ = { pass: true };
+    _ = { pass: this.args[0] === "undefined" || this.args[0] === "" || !!this.args[0] };
     subscribe() {
         super.subscribe();
         this.on("preInit", () => {

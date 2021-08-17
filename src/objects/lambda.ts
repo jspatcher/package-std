@@ -30,7 +30,7 @@ export default class lambda extends StdObject<{}, {}, [Bang, any], [(...args: an
         default: 0,
         description: "Arguments count"
     }];
-    _ = { argsCount: 0, result: undefined as any };
+    _ = { argsCount: typeof this.args[0] === "number" && this.args[0] >= 0 ? ~~this.args[0] : 0, result: undefined as any };
     lambda = (...args: any[]) => {
         this._.result = undefined;
         if (this._.argsCount === 0) {
@@ -44,10 +44,9 @@ export default class lambda extends StdObject<{}, {}, [Bang, any], [(...args: an
         super.subscribe();
         this.on("preInit", () => {
             this.inlets = 2;
-            this.outlets = 3;
+            this.outlets = 3 + this._.argsCount;
         });
-        this.on("updateArgs", () => {
-            const { args } = this.box;
+        this.on("updateArgs", (args) => {
             if (typeof args[0] === "number" && args[0] >= 0) {
                 this._.argsCount = ~~args[0];
                 this.outlets = 2 + this._.argsCount;
@@ -56,7 +55,9 @@ export default class lambda extends StdObject<{}, {}, [Bang, any], [(...args: an
         this.on("inlet", ({ data, inlet }) => {
             if (inlet === 0) {
                 if (isBang(data)) this.outlet(0, this.lambda);
-            } else if (inlet === 1) this._.result = data;
+            } else if (inlet === 1) {
+                this._.result = data;
+            }
         });
     }
 }

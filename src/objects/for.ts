@@ -42,7 +42,7 @@ export default class For extends StdObject<{}, {}, [Bang, number, number, number
         default: 1,
         description: "The step"
     }];
-    _ = { start: 0, end: 0, step: 1 };
+    _ = { start: +this.args[0] || 0, end: +this.args[1] || 0, step: +this.args[2] || 1 };
     subscribe() {
         super.subscribe();
         this.on("preInit", () => {

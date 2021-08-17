@@ -22,7 +22,7 @@ export default class delay extends StdObject<{}, {}, [any, number], [any]> {
         default: 0,
         description: "Default delay time"
     }];
-    _ = { time: 0, ref: new Set<number>() };
+    _ = { time: +this.args[0], ref: new Set<number>() };
     subscribe() {
         super.subscribe();
         this.on("preInit", () => {

@@ -30,7 +30,7 @@ export default class set extends StdObject<{}, {}, [Record<string, any> | any[],
         default: undefined,
         description: "Initial value of the property"
     }];
-    _ = { key: undefined as string | number, value: undefined as any };
+    _ = { key: typeof this.args[0] === "string" || typeof this.args[0] === "number" ? this.args[0] : undefined, value: this.args[1] };
     subscribe() {
         super.subscribe();
         this.on("preInit", () => {

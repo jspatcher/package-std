@@ -17,7 +17,7 @@ export default class print extends StdObject<{}, {}, [any], [], [string]> {
         description: "Title"
     }];
     get title() {
-        return `${this.args[0]}`;
+        return `${this.args[0] || "Print"}`;
     }
     subscribe() {
         super.subscribe();

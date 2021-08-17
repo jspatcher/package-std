@@ -28,7 +28,7 @@ export default class ForIn extends StdObject<{}, {}, [any, any], [Bang, string |
         optional: true,
         description: "Initial object to iterate"
     }];
-    _ = { buffer: null as any };
+    _ = { buffer: this.args[0] };
     subscribe() {
         super.subscribe();
         this.on("preInit", () => {

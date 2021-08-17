@@ -31,7 +31,7 @@ export default class obj extends StdObject<{}, {}, [Bang, ...any], [Record<strin
             this.inlets = args.length + 1;
         });
         this.on("postInit", () => {
-            this.inlets = this.box.args.length + 1;
+            this.inlets = this.args.length + 1;
             this.outlets = 1;
         });
         this.on("inlet", ({ data, inlet }) => {

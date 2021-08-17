@@ -2,12 +2,13 @@ import StdObject from "./base";
 import { Bang, isBang } from "../sdk";
 import type { IArgsMeta, IPropsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
+type A = [string, ...any[]];
 interface P {
     args: number;
     sync: boolean;
 }
 
-export default class call extends StdObject<{}, {}, [any | Bang, ...any[]], any[], [string, ...any[]], P, { loading: boolean }> {
+export default class call extends StdObject<{}, {}, [any | Bang, ...any[]], any[], A, P, { loading: boolean }> {
     static description = "Call a method of current object";
     static inlets: IInletsMeta = [{
         isHot: true,
@@ -57,23 +58,27 @@ export default class call extends StdObject<{}, {}, [any | Bang, ...any[]], any[
     initialOutlets = 2;
     subscribe() {
         super.subscribe();
-        this.on("preInit", () => {
-            this.inlets = this.initialInlets;
-            this.outlets = this.initialOutlets;
-        });
-        this.on("updateArgs", (args) => {
+        const handleArgs = (args: Partial<A>) => {
             this._.inputs = args.slice(1);
             const argsCount = Math.max(args.length - 1, ~~+this.getProp("args"));
             this.inlets = Math.max(1, this.initialInlets + argsCount);
             this.outlets = this.initialOutlets + argsCount;
-        });
-        this.on("updateProps", (props) => {
+        };
+        const handleProps = (props: Partial<P>) => {
             if (props.args && typeof props.args === "number" && props.args >= 0) {
                 const argsCount = Math.max(this.box.args.length - 1, ~~props.args);
                 this.inlets = Math.max(1, this.initialInlets + argsCount);
                 this.outlets = this.initialOutlets + argsCount;
             }
-        });
+        };
+        this.on("postInit", () => {
+            if (this.args.length) handleArgs(this.args);
+            if (this.props) handleProps(this.props);
+            if (this.inlets < this.initialInlets) this.inlets = this.initialInlets;
+            if (this.outlets < this.initialOutlets) this.outlets = this.initialOutlets;
+        })
+        this.on("updateArgs", handleArgs);
+        this.on("updateProps", handleProps);
         this.on("inlet", ({ data, inlet }) => {
             if (inlet === 0) {
                 if (!isBang(data)) this._.instance = data;

@@ -3,7 +3,7 @@ import ForIn from "./objects/for-in";
 import If from "./objects/if";
 import bang from "./objects/bang";
 import call from "./objects/call";
-import delay from "./objects/delay";
+// import delay from "./objects/delay";
 import dget from "./objects/dget";
 import gate from "./objects/gate";
 import get from "./objects/get";
@@ -36,7 +36,7 @@ export default async () => {
         bang: generateRemotedObject(bang as typeof BaseObject),
         loadbang: generateRemotedObject(loadbang as typeof BaseObject),
         unloadbang: generateRemotedObject(unloadbang as typeof BaseObject),
-        delay: generateRemotedObject(delay as typeof BaseObject),
+        // delay: generateRemotedObject(delay as typeof BaseObject),
         thispatcher: generateRemotedObject(thispatcher as typeof BaseObject)
     }
 };
