@@ -38,7 +38,7 @@ export default async () => {
         call: generateRemoteObject(call as typeof BaseObject),
         v: generateRemoteObject(v as typeof BaseObject),
         lambda: generateRemoteObject(lambda as typeof BaseObject),
-        bang: generateRemoteObject(bang as typeof BaseObject),
+        bang,
         loadbang: generateRemoteObject(loadbang as typeof BaseObject),
         unloadbang: generateRemoteObject(unloadbang as typeof BaseObject),
         // delay: generateRemoteObject(delay as typeof BaseObject),
