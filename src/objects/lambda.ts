@@ -44,7 +44,7 @@ export default class lambda extends StdObject<{}, {}, [Bang, any], [(...args: an
         super.subscribe();
         this.on("preInit", () => {
             this.inlets = 2;
-            this.outlets = 3 + this._.argsCount;
+            this.outlets = 2 + this._.argsCount;
         });
         this.on("updateArgs", (args) => {
             if (typeof args[0] === "number" && args[0] >= 0) {
