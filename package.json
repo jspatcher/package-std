@@ -1,6 +1,6 @@
 {
   "name": "@jspatcher/package-std",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "The standard package for JSPatcher",
   "main": "dist/index.js",
   "scripts": {
