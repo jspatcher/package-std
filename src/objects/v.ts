@@ -7,7 +7,7 @@ import type { ProjectFileEventMap } from "@jspatcher/jspatcher/src/core/file/Abs
 
 type A = [string | number, any];
 
-export default class v extends StdObject<{}, { value: any }, [Bang | any, any, string | number], [any], A> {
+export default class v extends StdObject<{}, { value: any }, [Bang | any, any, string | number], [any, any], A> {
     static description = "Store anything as named sharable variable";
     static inlets: IInletsMeta = [{
         isHot: true,

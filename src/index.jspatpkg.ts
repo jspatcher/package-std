@@ -15,6 +15,7 @@ import sel from "./objects/sel";
 import set from "./objects/set";
 import thispatcher from "./objects/thispatcher";
 import v from "./objects/v";
+import _ from "./objects/_";
 import unloadbang from "./objects/unloadbang";
 import BangUI from "./ui/bang";
 import { BaseObject, generateDefaultObject } from "./sdk";
@@ -37,6 +38,7 @@ export default async () => {
         dget: generateDefaultObject(dget as typeof BaseObject),
         call: generateDefaultObject(call as typeof BaseObject),
         v: generateDefaultObject(v as typeof BaseObject),
+        _: generateDefaultObject(_ as typeof BaseObject),
         lambda: generateDefaultObject(lambda as typeof BaseObject),
         bang,
         loadbang: generateDefaultObject(loadbang as typeof BaseObject),

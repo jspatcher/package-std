@@ -15,6 +15,7 @@ import sel from "./objects/sel";
 import set from "./objects/set";
 import thispatcher from "./objects/thispatcher";
 import v from "./objects/v";
+import _ from "./objects/_";
 import unloadbang from "./objects/unloadbang";
 import { BaseObject, generateRemotedObject } from "./sdk";
 
@@ -32,6 +33,7 @@ export default async () => {
         dget: generateRemotedObject(dget as typeof BaseObject),
         call: generateRemotedObject(call as typeof BaseObject),
         v: generateRemotedObject(v as typeof BaseObject),
+        _: generateRemotedObject(_ as typeof BaseObject),
         lambda: generateRemotedObject(lambda as typeof BaseObject),
         bang: generateRemotedObject(bang as typeof BaseObject),
         loadbang: generateRemotedObject(loadbang as typeof BaseObject),

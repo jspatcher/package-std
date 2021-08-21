@@ -47,6 +47,105 @@ const {
 
 /***/ }),
 
+/***/ "./src/objects/_.ts":
+/*!**************************!*\
+  !*** ./src/objects/_.ts ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _)
+/* harmony export */ });
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./src/objects/base.ts");
+/* harmony import */ var _sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sdk */ "./src/sdk.ts");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+class _ extends _base__WEBPACK_IMPORTED_MODULE_0__.default {
+  constructor() {
+    super(...arguments);
+
+    _defineProperty(this, "state", {
+      value: undefined
+    });
+  }
+
+  subscribe() {
+    super.subscribe();
+
+    const handleArgs = args => this.setState({
+      value: args[0]
+    });
+
+    this.on("preInit", () => {
+      this.inlets = 2;
+      this.outlets = 1;
+    });
+    this.on("updateArgs", handleArgs);
+    this.on("updateState", _ref => {
+      let {
+        value
+      } = _ref;
+      this.setState({
+        value
+      });
+      this.outlet(0, this.state.value);
+    });
+    this.on("postInit", () => {
+      handleArgs(this.args);
+    });
+    this.on("inlet", _ref2 => {
+      let {
+        data,
+        inlet
+      } = _ref2;
+
+      if (inlet === 0) {
+        if (!(0,_sdk__WEBPACK_IMPORTED_MODULE_1__.isBang)(data)) {
+          this.setState({
+            value: data
+          });
+        }
+
+        this.outlet(0, this.state.value);
+      } else if (inlet === 1) {
+        this.setState({
+          value: data
+        });
+      }
+    });
+  }
+
+}
+
+_defineProperty(_, "description", "Store anything");
+
+_defineProperty(_, "inlets", [{
+  isHot: true,
+  type: "anything",
+  description: "Bang to output stored value, anything to set the value then output it."
+}, {
+  isHot: false,
+  type: "anything",
+  description: "Anything to set the value."
+}]);
+
+_defineProperty(_, "outlets", [{
+  type: "anything",
+  description: "Value"
+}]);
+
+_defineProperty(_, "args", [{
+  type: "anything",
+  optional: true,
+  description: "Initial value"
+}]);
+
+/***/ }),
+
 /***/ "./src/objects/bang.ts":
 /*!*****************************!*\
   !*** ./src/objects/bang.ts ***!
@@ -3889,8 +3988,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _objects_set__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./objects/set */ "./src/objects/set.ts");
 /* harmony import */ var _objects_thispatcher__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./objects/thispatcher */ "./src/objects/thispatcher.ts");
 /* harmony import */ var _objects_v__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./objects/v */ "./src/objects/v.ts");
-/* harmony import */ var _objects_unloadbang__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./objects/unloadbang */ "./src/objects/unloadbang.ts");
-/* harmony import */ var _sdk__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./sdk */ "./src/sdk.ts");
+/* harmony import */ var _objects___WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./objects/_ */ "./src/objects/_.ts");
+/* harmony import */ var _objects_unloadbang__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./objects/unloadbang */ "./src/objects/unloadbang.ts");
+/* harmony import */ var _sdk__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./sdk */ "./src/sdk.ts");
 
 
 
@@ -3910,26 +4010,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (async () => {
   return {
-    print: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_print__WEBPACK_IMPORTED_MODULE_11__.default),
-    for: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_for__WEBPACK_IMPORTED_MODULE_0__.default),
-    "for-in": (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_for_in__WEBPACK_IMPORTED_MODULE_1__.default),
-    if: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_if__WEBPACK_IMPORTED_MODULE_2__.default),
-    gate: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_gate__WEBPACK_IMPORTED_MODULE_6__.default),
-    sel: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_sel__WEBPACK_IMPORTED_MODULE_12__.default),
-    obj: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_obj__WEBPACK_IMPORTED_MODULE_10__.default),
-    set: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_set__WEBPACK_IMPORTED_MODULE_13__.default),
-    get: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_get__WEBPACK_IMPORTED_MODULE_7__.default),
-    dget: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_dget__WEBPACK_IMPORTED_MODULE_5__.default),
-    call: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_call__WEBPACK_IMPORTED_MODULE_4__.default),
-    v: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_v__WEBPACK_IMPORTED_MODULE_15__.default),
-    lambda: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_lambda__WEBPACK_IMPORTED_MODULE_8__.default),
-    bang: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_bang__WEBPACK_IMPORTED_MODULE_3__.default),
-    loadbang: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_loadbang__WEBPACK_IMPORTED_MODULE_9__.default),
-    unloadbang: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_unloadbang__WEBPACK_IMPORTED_MODULE_16__.default),
+    print: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_print__WEBPACK_IMPORTED_MODULE_11__.default),
+    for: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_for__WEBPACK_IMPORTED_MODULE_0__.default),
+    "for-in": (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_for_in__WEBPACK_IMPORTED_MODULE_1__.default),
+    if: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_if__WEBPACK_IMPORTED_MODULE_2__.default),
+    gate: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_gate__WEBPACK_IMPORTED_MODULE_6__.default),
+    sel: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_sel__WEBPACK_IMPORTED_MODULE_12__.default),
+    obj: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_obj__WEBPACK_IMPORTED_MODULE_10__.default),
+    set: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_set__WEBPACK_IMPORTED_MODULE_13__.default),
+    get: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_get__WEBPACK_IMPORTED_MODULE_7__.default),
+    dget: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_dget__WEBPACK_IMPORTED_MODULE_5__.default),
+    call: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_call__WEBPACK_IMPORTED_MODULE_4__.default),
+    v: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_v__WEBPACK_IMPORTED_MODULE_15__.default),
+    _: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects___WEBPACK_IMPORTED_MODULE_16__.default),
+    lambda: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_lambda__WEBPACK_IMPORTED_MODULE_8__.default),
+    bang: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_bang__WEBPACK_IMPORTED_MODULE_3__.default),
+    loadbang: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_loadbang__WEBPACK_IMPORTED_MODULE_9__.default),
+    unloadbang: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_unloadbang__WEBPACK_IMPORTED_MODULE_17__.default),
     // delay: generateRemotedObject(delay as typeof BaseObject),
-    thispatcher: (0,_sdk__WEBPACK_IMPORTED_MODULE_17__.generateRemotedObject)(_objects_thispatcher__WEBPACK_IMPORTED_MODULE_14__.default)
+    thispatcher: (0,_sdk__WEBPACK_IMPORTED_MODULE_18__.generateRemotedObject)(_objects_thispatcher__WEBPACK_IMPORTED_MODULE_14__.default)
   };
 });
 })();
