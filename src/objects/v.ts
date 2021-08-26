@@ -35,7 +35,7 @@ export default class v extends StdObject<{}, { value: any }, [Bang | any, any, s
         optional: true,
         description: "Initial value"
     }];
-    state: { value: any } = { value: undefined };
+    state = { value: this.args[1] };
     _: { key: string; sharedItem: AbstractProjectFile | TemporaryProjectFile } = { key: this.box.args[0]?.toString(), sharedItem: null };
     subscribe() {
         super.subscribe();
@@ -99,9 +99,7 @@ export default class v extends StdObject<{}, { value: any }, [Bang | any, any, s
             this._.sharedItem?.save(this.state.value, this);
             this.outlet(0, this.state.value);
         });
-        this.on("postInit", () => {
-            return handleArgs(this.args);
-        });
+        this.on("postInit", reload);
         this.on("inlet", ({ data, inlet }) => {
             if (inlet === 0) {
                 if (!isBang(data)) {
