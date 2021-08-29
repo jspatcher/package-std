@@ -1,6 +1,5 @@
 const path = require('path');
 const { DefinePlugin } = require('webpack');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
@@ -27,11 +26,16 @@ const config = {
   },
   module: {
     rules: [{
-        test: /\.(ts|js)x?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
+      test: /\.(ts|js)x?$/,
+      use: {
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'tsx',
+          target: 'es2017'
+        }
       },
-    ]
+      exclude: /node_modules/
+    }]
   },
   plugins: [
     new DefinePlugin({
