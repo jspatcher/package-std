@@ -35,7 +35,7 @@ export default class sel extends StdObject<{}, {}, any[], (Bang | any)[], any[]>
         const { args } = this.box;
         const testsCount = args.length;
         const [inletMeta0, inletMeta1] = sel.meta.inlets;
-        const [outletMeta0, outletMeta1] = sel.meta.inlets;
+        const [outletMeta0, outletMeta1] = sel.meta.outlets;
         const { meta } = this;
         meta.inlets = [inletMeta0];
         meta.outlets = [];
