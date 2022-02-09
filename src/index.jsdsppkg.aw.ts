@@ -4,6 +4,7 @@ import If from "./objects/if";
 import bang from "./objects/bang";
 import call from "./objects/call";
 // import delay from "./objects/delay";
+import collect from "./objects/collect";
 import dget from "./objects/dget";
 import gate from "./objects/gate";
 import get from "./objects/get";
@@ -30,6 +31,7 @@ export default async () => {
         obj: generateRemotedObject(obj as typeof BaseObject),
         set: generateRemotedObject(set as typeof BaseObject),
         get: generateRemotedObject(get as typeof BaseObject),
+        collect: generateRemotedObject(collect as typeof BaseObject),
         dget: generateRemotedObject(dget as typeof BaseObject),
         call: generateRemotedObject(call as typeof BaseObject),
         v: generateRemotedObject(v as typeof BaseObject),

@@ -4,6 +4,7 @@ import If from "./objects/if";
 import _bang from "./objects/bang";
 import call from "./objects/call";
 import delay from "./objects/delay";
+import metro from "./objects/metro";
 import dget from "./objects/dget";
 import gate from "./objects/gate";
 import get from "./objects/get";
@@ -44,6 +45,7 @@ export default async () => {
         loadbang: generateDefaultObject(loadbang as typeof BaseObject),
         unloadbang: generateDefaultObject(unloadbang as typeof BaseObject),
         delay: generateDefaultObject(delay as typeof BaseObject),
+        metro: generateDefaultObject(metro as typeof BaseObject),
         thispatcher: generateDefaultObject(thispatcher as typeof BaseObject)
     }
 };

@@ -1,7 +1,7 @@
 import StdObject from "./base";
 import type { IArgsMeta, IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
-export default class delay extends StdObject<{}, {}, [any, number], [any]> {
+export default class delay extends StdObject<{}, {}, [any, number], [any], [number?]> {
     static description = "Delay an input";
     static inlets: IInletsMeta = [{
         isHot: true,
