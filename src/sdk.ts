@@ -14,7 +14,8 @@ export const {
     generateDefaultObject,
     generateRemoteObject,
     Bang,
-    isBang
+    isBang,
+    Utils
 } = sdk;
 
 export interface Bang extends InstanceType<typeof Bang> {}

@@ -18,6 +18,7 @@ import thispatcher from "./objects/thispatcher";
 import v from "./objects/v";
 import _ from "./objects/_";
 import unloadbang from "./objects/unloadbang";
+import line from "./objects/line";
 import BangUI from "./ui/bang";
 import { BaseObject, generateDefaultObject } from "./sdk";
 
@@ -46,6 +47,7 @@ export default async () => {
         unloadbang: generateDefaultObject(unloadbang as typeof BaseObject),
         delay: generateDefaultObject(delay as typeof BaseObject),
         metro: generateDefaultObject(metro as typeof BaseObject),
+        line: generateDefaultObject(line as typeof BaseObject),
         thispatcher: generateDefaultObject(thispatcher as typeof BaseObject)
     }
 };
