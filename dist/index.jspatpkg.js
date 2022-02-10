@@ -1085,7 +1085,7 @@ class line extends _base__WEBPACK_IMPORTED_MODULE_0__.default {
     super.subscribe();
     this.on("preInit", () => {
       this.inlets = 3;
-      this.outlets = 1;
+      this.outlets = 2;
     });
     this.on("updateArgs", (args) => {
       if (typeof args[0] === "number") {
@@ -1130,15 +1130,18 @@ line.inlets = [{
 }, {
   isHot: false,
   type: "number",
-  description: "ramp time in seconds"
+  description: "Ramp time in seconds"
 }, {
   isHot: false,
   type: "number",
-  description: "time grain in seconds"
+  description: "Time grain in seconds"
 }];
 line.outlets = [{
   type: "bang",
-  description: "regular Bangs"
+  description: "Ramped values"
+}, {
+  type: "bang",
+  description: "Bang when finished"
 }];
 line.args = [{
   type: "number",

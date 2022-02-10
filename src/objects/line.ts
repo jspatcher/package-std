@@ -27,15 +27,18 @@ export default class line extends StdObject<{}, {}, [TBPF | "stop" | "pause" | "
     }, {
         isHot: false,
         type: "number",
-        description: "ramp time in seconds"
+        description: "Ramp time in seconds"
     }, {
         isHot: false,
         type: "number",
-        description: "time grain in seconds"
+        description: "Time grain in seconds"
     }];
     static outlets: IOutletsMeta = [{
         type: "bang",
-        description: "regular Bangs"
+        description: "Ramped values"
+    }, {
+        type: "bang",
+        description: "Bang when finished"
     }];
     static args: IArgsMeta = [{
         type: "number",
@@ -121,7 +124,7 @@ export default class line extends StdObject<{}, {}, [TBPF | "stop" | "pause" | "
         super.subscribe();
         this.on("preInit", () => {
             this.inlets = 3;
-            this.outlets = 1;
+            this.outlets = 2;
         });
         this.on("updateArgs", (args) => {
             if (typeof args[0] === "number") {
