@@ -44,7 +44,7 @@ export default class line extends StdObject<{}, {}, [TBPF | "stop" | "pause" | "
         type: "number",
         optional: true,
         default: 0,
-        description: "Default ramp time in seconds"
+        description: "Initial number"
     }, {
         type: "number",
         optional: true,
@@ -59,8 +59,8 @@ export default class line extends StdObject<{}, {}, [TBPF | "stop" | "pause" | "
         line: null as number[][],
         ref: null as number,
         $: null as number,
-        value: 0,
-        rampTime: +Math.max(0, this.args[0]) || 0,
+        value: +this.args[0] || 0,
+        rampTime: null as number,
         grain: +Math.max(0, this.args[1]) || 0.1
     };
     stopCurrentLine() {
@@ -127,9 +127,7 @@ export default class line extends StdObject<{}, {}, [TBPF | "stop" | "pause" | "
             this.outlets = 2;
         });
         this.on("updateArgs", (args) => {
-            if (typeof args[0] === "number") {
-                this._.rampTime = +Math.max(0, args[0]) || 0;
-            } else if (typeof args[1] === "number") {
+            if (typeof args[1] === "number") {
                 this._.grain = +Math.max(0, args[0]) || 0;
             }
         });

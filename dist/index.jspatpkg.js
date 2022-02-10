@@ -1016,8 +1016,8 @@ class line extends _base__WEBPACK_IMPORTED_MODULE_0__.default {
       line: null,
       ref: null,
       $: null,
-      value: 0,
-      rampTime: +Math.max(0, this.args[0]) || 0,
+      value: +this.args[0] || 0,
+      rampTime: null,
       grain: +Math.max(0, this.args[1]) || 0.1
     };
     this.handleTimeout = () => {
@@ -1088,9 +1088,7 @@ class line extends _base__WEBPACK_IMPORTED_MODULE_0__.default {
       this.outlets = 2;
     });
     this.on("updateArgs", (args) => {
-      if (typeof args[0] === "number") {
-        this._.rampTime = +Math.max(0, args[0]) || 0;
-      } else if (typeof args[1] === "number") {
+      if (typeof args[1] === "number") {
         this._.grain = +Math.max(0, args[0]) || 0;
       }
     });
@@ -1147,7 +1145,7 @@ line.args = [{
   type: "number",
   optional: true,
   default: 0,
-  description: "Default ramp time in seconds"
+  description: "Initial number"
 }, {
   type: "number",
   optional: true,
