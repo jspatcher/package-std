@@ -35,10 +35,18 @@ export default class metro extends StdObject<{}, {}, [boolean, number], [any], [
         active: this.getProp("active"),
         intervalRef: null as number,
         timeoutRef: null as number,
-        last: performance.now()
+        last: 0
     };
     subscribe() {
         super.subscribe();
+        const handleTimeout = () => {
+            this._.last = performance.now();
+            this.outlet(0, new Bang())
+            this._.intervalRef = window.setInterval(() => {
+                this._.last = performance.now();
+                this.outlet(0, new Bang())
+            }, this._.time * 1000);
+        };
         const activateTimer = (time: number) => {
             if (this._.timeoutRef) {
                 window.clearTimeout(this._.timeoutRef);
@@ -49,14 +57,8 @@ export default class metro extends StdObject<{}, {}, [boolean, number], [any], [
                 this._.intervalRef = null;
             }
             if (time && this._.active) {
-                this._.timeoutRef = window.setTimeout(() => {
-                    this._.last = performance.now();
-                    this.outlet(0, new Bang())
-                    this._.intervalRef = window.setInterval(() => {
-                        this._.last = performance.now();
-                        this.outlet(0, new Bang())
-                    }, this._.time * 1000);
-                }, Math.max(0, this._.last + this._.time * 1000 - performance.now()))
+                const timeout = Math.max(0, this._.last + this._.time * 1000 - performance.now());
+                this._.timeoutRef = window.setTimeout(handleTimeout, timeout);
             }
             this._.time = time;
         }
