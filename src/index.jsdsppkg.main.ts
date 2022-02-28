@@ -10,7 +10,8 @@ import gate from "./objects/gate";
 import get from "./objects/get";
 import lambda from "./objects/lambda";
 import _loadbang from "./objects/loadbang";
-import obj from "./objects/obj";
+import _obj from "./objects/obj";
+import _arr from "./objects/arr";
 import print from "./objects/print";
 import sel from "./objects/sel";
 import set from "./objects/set";
@@ -42,6 +43,9 @@ export class unloadbang extends generateRemoteObject(_unloadbang as typeof BaseO
     }
 }
 
+const obj = generateRemoteObject(_obj as typeof BaseObject);
+const arr = generateRemoteObject(_arr as typeof BaseObject);
+
 export default async () => {
     return {
         print: generateRemoteObject(print as typeof BaseObject),
@@ -50,7 +54,10 @@ export default async () => {
         if: generateRemoteObject(If as typeof BaseObject),
         gate: generateRemoteObject(gate as typeof BaseObject),
         sel: generateRemoteObject(sel as typeof BaseObject),
-        obj: generateRemoteObject(obj as typeof BaseObject),
+        obj,
+        "{}": obj,
+        arr,
+        "[]": arr,
         set: generateRemoteObject(set as typeof BaseObject),
         get: generateRemoteObject(get as typeof BaseObject),
         collect: generateRemoteObject(collect as typeof BaseObject),

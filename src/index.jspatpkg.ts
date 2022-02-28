@@ -10,7 +10,8 @@ import gate from "./objects/gate";
 import get from "./objects/get";
 import lambda from "./objects/lambda";
 import loadbang from "./objects/loadbang";
-import obj from "./objects/obj";
+import _obj from "./objects/obj";
+import _arr from "./objects/arr";
 import print from "./objects/print";
 import sel from "./objects/sel";
 import set from "./objects/set";
@@ -26,6 +27,9 @@ export class bang extends generateDefaultObject(_bang as typeof BaseObject) {
     static UI = BangUI;
 }
 
+const obj = generateDefaultObject(_obj as typeof BaseObject);
+const arr = generateDefaultObject(_arr as typeof BaseObject);
+
 export default async () => {
     return {
         print: generateDefaultObject(print as typeof BaseObject),
@@ -34,7 +38,10 @@ export default async () => {
         if: generateDefaultObject(If as typeof BaseObject),
         gate: generateDefaultObject(gate as typeof BaseObject),
         sel: generateDefaultObject(sel as typeof BaseObject),
-        obj: generateDefaultObject(obj as typeof BaseObject),
+        obj,
+        "{}": obj,
+        arr,
+        "[]": arr,
         set: generateDefaultObject(set as typeof BaseObject),
         get: generateDefaultObject(get as typeof BaseObject),
         dget: generateDefaultObject(dget as typeof BaseObject),
