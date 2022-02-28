@@ -43,10 +43,11 @@ export default class obj extends StdObject<{}, {}, [Bang, ...any], [Record<strin
             updateInletsMeta(this.getProp("hot"));
         });
         const updateInletsMeta = (isHot: boolean) => {
+            const inlet0Meta = obj.inlets[0];
             const inlet1Meta = { ...obj.inlets[1] };
             const lastInletMeta = obj.inlets[2];
             const restInletsMeta = this.args.map(propKey => ({ ...inlet1Meta, description: `${inlet1Meta.description}: ${propKey}`, isHot }))
-            this.setMeta({ inlets: [inlet1Meta, ...restInletsMeta, lastInletMeta] });
+            this.setMeta({ inlets: [inlet0Meta, ...restInletsMeta, lastInletMeta] });
         }
         this.on("postInit", () => {
             this.inlets = this.args.length + 2;

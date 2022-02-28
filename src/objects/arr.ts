@@ -43,10 +43,11 @@ export default class arr extends StdObject<{}, {}, [Bang, ...any], [Record<strin
             updateInletsMeta(this.getProp("hot"));
         });
         const updateInletsMeta = (isHot: boolean) => {
+            const inlet0Meta = arr.inlets[0];
             const inlet1Meta = { ...arr.inlets[1] };
             const lastInletMeta = arr.inlets[2];
             const restInletsMeta = new Array(Math.max(0, ~~+this.args[0] ?? 1)).fill(null).map((v, i) => ({ ...inlet1Meta, description: `${inlet1Meta.description}: ${i}`, isHot }))
-            this.setMeta({ inlets: [inlet1Meta, ...restInletsMeta, lastInletMeta] });
+            this.setMeta({ inlets: [inlet0Meta, ...restInletsMeta, lastInletMeta] });
         }
         this.on("postInit", () => {
             this.inlets = Math.max(0, ~~+this.args[0] ?? 1) + 2;
