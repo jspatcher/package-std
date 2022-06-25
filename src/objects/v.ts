@@ -94,8 +94,8 @@ export default class v extends StdObject<{}, { value: any }, [Bang | any, any, s
             this.outlets = 1;
         });
         this.on("updateArgs", handleArgs);
-        this.on("updateState", ({ value }) => {
-            this.setState({ value });
+        this.on("updateState", ({ state: { value }, id }) => {
+            this.setState({ value }, id);
             this._.sharedItem?.save(this.state.value, this);
             this.outlet(0, this.state.value);
         });

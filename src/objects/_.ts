@@ -33,8 +33,8 @@ export default class _ extends StdObject<{}, { value: any }, [Bang | any, any], 
             this.outlets = 1;
         });
         this.on("updateArgs", handleArgs);
-        this.on("updateState", ({ value }) => {
-            this.setState({ value });
+        this.on("updateState", ({ state: { value }, id }) => {
+            this.setState({ value }, id);
             this.outlet(0, this.state.value);
         });
         this.on("postInit", () => {
