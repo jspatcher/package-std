@@ -8,6 +8,7 @@ import metro from "./objects/metro";
 import dget from "./objects/dget";
 import gate from "./objects/gate";
 import get from "./objects/get";
+import collect from "./objects/collect";
 import lambda from "./objects/lambda";
 import loadbang from "./objects/loadbang";
 import _obj from "./objects/obj";
@@ -44,6 +45,7 @@ export default async () => {
         "[]": arr,
         set: generateDefaultObject(set as typeof BaseObject),
         get: generateDefaultObject(get as typeof BaseObject),
+        collect: generateDefaultObject(collect as typeof BaseObject),
         dget: generateDefaultObject(dget as typeof BaseObject),
         call: generateDefaultObject(call as typeof BaseObject),
         v: generateDefaultObject(v as typeof BaseObject),

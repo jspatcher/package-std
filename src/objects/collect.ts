@@ -2,7 +2,7 @@ import StdObject from "./base";
 import { Bang, isBang } from "../sdk";
 import type { IInletsMeta, IOutletsMeta } from "@jspatcher/jspatcher/src/core/objects/base/AbstractObject";
 
-export default class sel extends StdObject<{}, {}, [any, Bang], any[]> {
+export default class collect extends StdObject<{}, {}, [any, Bang], any[]> {
     static description = "Collect data in an array";
     static inlets: IInletsMeta = [{
         isHot: true,
