@@ -20,6 +20,7 @@ import v from "./objects/v";
 import _ from "./objects/_";
 import unloadbang from "./objects/unloadbang";
 import { BaseObject, generateRemotedObject } from "./sdk";
+import change from "./objects/change";
 
 const obj = generateRemotedObject(_obj as typeof BaseObject);
 const arr = generateRemotedObject(_arr as typeof BaseObject);
@@ -48,6 +49,7 @@ export default async () => {
         loadbang: generateRemotedObject(loadbang as typeof BaseObject),
         unloadbang: generateRemotedObject(unloadbang as typeof BaseObject),
         // delay: generateRemotedObject(delay as typeof BaseObject),
-        thispatcher: generateRemotedObject(thispatcher as typeof BaseObject)
+        thispatcher: generateRemotedObject(thispatcher as typeof BaseObject),
+        change: generateRemotedObject(change as typeof BaseObject)
     }
 };

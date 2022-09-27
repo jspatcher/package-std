@@ -23,6 +23,7 @@ import unloadbang from "./objects/unloadbang";
 import line from "./objects/line";
 import BangUI from "./ui/bang";
 import { BaseObject, generateDefaultObject } from "./sdk";
+import change from "./objects/change";
 
 export class bang extends generateDefaultObject(_bang as typeof BaseObject) {
     static UI = BangUI;
@@ -57,6 +58,7 @@ export default async () => {
         delay: generateDefaultObject(delay as typeof BaseObject),
         metro: generateDefaultObject(metro as typeof BaseObject),
         line: generateDefaultObject(line as typeof BaseObject),
-        thispatcher: generateDefaultObject(thispatcher as typeof BaseObject)
+        thispatcher: generateDefaultObject(thispatcher as typeof BaseObject),
+        change: generateDefaultObject(change as typeof BaseObject)
     }
 };

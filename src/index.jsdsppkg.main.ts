@@ -21,6 +21,7 @@ import _ from "./objects/_";
 import _unloadbang from "./objects/unloadbang";
 import BangUI from "./ui/bang";
 import { BaseObject, generateRemoteObject } from "./sdk";
+import change from "./objects/change";
 
 export class bang extends generateRemoteObject(_bang as typeof BaseObject) {
     static UI = BangUI;
@@ -70,6 +71,7 @@ export default async () => {
         loadbang,
         unloadbang,
         // delay: generateRemoteObject(delay as typeof BaseObject),
-        thispatcher: generateRemoteObject(thispatcher as typeof BaseObject)
+        thispatcher: generateRemoteObject(thispatcher as typeof BaseObject),
+        change: generateRemoteObject(change as typeof BaseObject)
     }
 };

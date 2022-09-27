@@ -517,6 +517,66 @@ call.props = {
 
 /***/ }),
 
+/***/ "./src/objects/change.ts":
+/*!*******************************!*\
+  !*** ./src/objects/change.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ change)
+/* harmony export */ });
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./base */ "./src/objects/base.ts");
+
+class change extends _base__WEBPACK_IMPORTED_MODULE_0__["default"] {
+  constructor() {
+    super(...arguments);
+    this._ = { prev: void 0 };
+  }
+  subscribe() {
+    super.subscribe();
+    this.on("preInit", () => {
+      this.inlets = 1;
+      this.outlets = 1;
+    });
+    this.on("inlet", ({ inlet, data }) => {
+      const result = this.getProp("mode") === "==" ? this._.prev == data : this._.prev === data;
+      if (!result)
+        this.outlet(0, data);
+      this._.prev = data;
+    });
+  }
+}
+change.description = "Filter out undesirable repetitions";
+change.inlets = [{
+  isHot: true,
+  type: "anything",
+  description: "Anything to be compared with the previous input"
+}];
+change.outlets = [{
+  type: "anything",
+  description: "Output if changed"
+}];
+change.args = [{
+  type: "anything",
+  description: "Initial state",
+  default: void 0,
+  optional: true
+}];
+change.props = {
+  mode: {
+    type: "enum",
+    enums: ["==", "==="],
+    default: "===",
+    description: "Comparison algorithm"
+  }
+};
+
+
+/***/ }),
+
 /***/ "./src/objects/collect.ts":
 /*!********************************!*\
   !*** ./src/objects/collect.ts ***!
@@ -4102,6 +4162,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _objects_unloadbang__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./objects/unloadbang */ "./src/objects/unloadbang.ts");
 /* harmony import */ var _ui_bang__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./ui/bang */ "./src/ui/bang.tsx");
 /* harmony import */ var _sdk__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./sdk */ "./src/sdk.ts");
+/* harmony import */ var _objects_change__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./objects/change */ "./src/objects/change.ts");
+
 
 
 
@@ -4168,7 +4230,8 @@ const arr = (0,_sdk__WEBPACK_IMPORTED_MODULE_21__.generateRemoteObject)(_objects
     bang,
     loadbang,
     unloadbang,
-    thispatcher: (0,_sdk__WEBPACK_IMPORTED_MODULE_21__.generateRemoteObject)(_objects_thispatcher__WEBPACK_IMPORTED_MODULE_16__["default"])
+    thispatcher: (0,_sdk__WEBPACK_IMPORTED_MODULE_21__.generateRemoteObject)(_objects_thispatcher__WEBPACK_IMPORTED_MODULE_16__["default"]),
+    change: (0,_sdk__WEBPACK_IMPORTED_MODULE_21__.generateRemoteObject)(_objects_change__WEBPACK_IMPORTED_MODULE_22__["default"])
   };
 });
 
