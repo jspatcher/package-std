@@ -150,15 +150,17 @@ class _ extends _base__WEBPACK_IMPORTED_MODULE_0__["default"] {
   }
   subscribe() {
     super.subscribe();
-    const handleArgs = (args) => this.setState({ value: args[0] });
+    const handleArgs = (args) => {
+      this.setState({ value: args[0] });
+      this.outlets = Math.max(1, ~~+args[1] || 1);
+    };
     this.on("preInit", () => {
       this.inlets = 2;
-      this.outlets = 1;
     });
     this.on("updateArgs", handleArgs);
     this.on("updateState", ({ state: { value }, id }) => {
       this.setState({ value }, id);
-      this.outlet(0, this.state.value);
+      this.outletAll(new Array(this.outlets).fill(this.state.value));
     });
     this.on("postInit", () => {
       handleArgs(this.args);
@@ -168,7 +170,7 @@ class _ extends _base__WEBPACK_IMPORTED_MODULE_0__["default"] {
         if (!(0,_sdk__WEBPACK_IMPORTED_MODULE_1__.isBang)(data)) {
           this.setState({ value: data });
         }
-        this.outlet(0, this.state.value);
+        this.outletAll(new Array(this.outlets).fill(this.state.value));
       } else if (inlet === 1) {
         this.setState({ value: data });
       }
@@ -187,12 +189,18 @@ _.inlets = [{
 }];
 _.outlets = [{
   type: "anything",
-  description: "Value"
+  description: "Value",
+  varLength: true
 }];
 _.args = [{
   type: "anything",
   optional: true,
   description: "Initial value"
+}, {
+  type: "number",
+  optional: true,
+  description: "Number of Outlets",
+  default: 1
 }];
 
 
